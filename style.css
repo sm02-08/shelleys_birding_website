@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
-    --base-color: #ffffff; 
+    --base-color: #e0eaff; 
     --text-color: #000000; 
-    --primary-color: #ffc06e;
-    --secondary-color: #8D8DFF; 
-    --color-1: #F9F6F3; 
-    --color-2: #F3F7F9; 
-    --color-3: #F6F3F9; 
+    --primary-color: #407d3d;
+    --secondary-color: #5775b5; 
+    --color-1: #b5ccff; 
+    --color-2: #a0b7e8; 
+    --color-3: #b2bfdb; 
 }
 
 * { /* use the "*" to edit all css elements */ 
