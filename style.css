@@ -120,5 +120,124 @@ h1 {
 section { 
     padding: 3em min(2em, 15%); /* top & bottom padding is fixed with 3em. padding for left & right (2nd value) will be responsive: it'll usually be 2em but on smaller screens, it uses %s for flexibility */
     background-color: var(--color-2); /* adds a diff color for this section to distinguish it from the white background */ 
+    text-align: center; /* centers all the text *inside the section* */ 
+}
+
+h2 { /* the heading 2 will be 2rem size */
+    font-size: 2rem; 
+}
+
+section p { /* the paragraph section gets a slight margin top and a font size of 1.25 rem */
+    margin-top: 1em; 
+    font-size: 1.25rem;
+} /* good thing is that we don't need any new flexbox rule because we're using the same styles as our first ones */
+
+/* now editing the "my work" section */
+section#my-work { 
+    background-color: var(--color-3); /* apply a diff background color */ 
+}
+
+/* this is where all the amgic happens with aligning hte pictures taken into a grid format */ 
+.grid-container { 
+    margin-top: 3em; 
+    margin-bottom: 3em; /* add a margin to top and bottom to give the gallery some breathing room */ 
+    display: grid; /* turns the container into a css grid layout */ 
+    width: 100%; /* makes the grid container take up the full width of its parent container */
+    grid-template-columns: repeat(4, 1fr) /* grid-template-columns defines how many columns you want to have (in this case, 4). each "fr" stands for "one fraction" of the available space. that way, all the columns are the same size */
+    grid-template-rows: 1fr 1fr; /* define how many rows + how big you want them to be. in this case, we want to have 2 rows of one fraction */ 
+    grid-template-areas: /* earlier we defined a grid area on every image in html. now we can use these identifiers in the grid areas property */ 
+    "img-1 img-1 img-2 img-3"
+    "img-1 img-1 img-4 img-5"
+    "img-6 img-7 img-8 img-9"; /* this means that the image with grid area "img-1" is going to take up the first 2 columns and the first 2 rows, while the other images are going to be in the remaining spaces */
+    gap: 1em; /* adds space between the images in the grid */
+}
+
+.grid-container img { 
+    height: 100%; 
+    width: 100%; /* make sure the height & width fill the entire grid area */ 
+    border-radius: 0.5em; 
+    transition: 100ms ease; /* small hover effect */ 
+}
+
+.grid-container img:hover { /* adjust the scale of the hovering */
+    scale: 1.05; /* make the image slightly bigger on hover */ 
+}
+
+details { 
+    margin-top: 1em; /* add spacing between each section */ 
+    background-color: var(--base-color);
+    border-radius: 1em;
+}
+
+details summary {
+    padding: 1em;
+    font-size: 1.7rem; 
+    font-family: Funnel Sans, Fira Sans;
+}
+
+details p { 
+    padding: 0 2em 2em 2em; /* we set part to 0 to not mess up the formatting when the container is collapsed */ 
+}
+
+footer {
+    padding-bottom: 1.5em; 
     text-align: center; 
+}
+
+footer a { 
+    margin: 0 1em; 
+    text-decoration: none; 
+    color: var(--text-color);
+}
+
+footer a:hover { 
+    text-decoration: underline; 
+}
+
+/* the phone screen is small, so how does the website adjust to them */
+@media(max-width: 988px) { 
+    header { 
+        text-align: center; 
+    }
+
+    header .text-container { 
+        padding-top: 0;
+    }
+}
+
+/* let's define another media query and pick where much of our bar links start to collide */
+
+@media(max-width: 640px) { 
+    nav li { 
+        display: none; /* every link disappears here */ 
+    }
+    navi li: first-child 
+    navi li: last child { 
+        display: block; /* hide everything in the bar menu besides the first and last */ 
+    }
+
+    /* for mobile button, you also want to remove the margin top */ 
+    header { 
+        margin-top: 0;
+    }
+
+    .cta-button { 
+        margin-top: 0.5em; 
+        width:100%; 
+        /* we created the photo grid with pictures with the desktop in mind, not the phone */ 
+    }
+}
+
+.grid-container { 
+    display: flex;
+    flex-direction: column; 
+}
+
+
+.text-container p { /* this way the images load one by one on phone/vertical screens*/
+    font-size: 1rem;
+}
+
+h2 { 
+    font-size: 1.5rem;
 }
