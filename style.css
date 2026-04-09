@@ -1,0 +1,10 @@
+img { 
+    width: 200px;
+}
+
+body { 
+    text-align: center; /* specifies that every `body` tag should have a `text-align` of `center`. thus, centering everything on the page */
+    font-family: 'Arial';
+    background: azure; 
+    color: purple; /* this is for text color -- all color names here: https://www.w3schools.com/colors/colors_names.asp */ 
+}
