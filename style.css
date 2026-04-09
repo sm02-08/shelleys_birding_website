@@ -1,10 +1,124 @@
-img { 
-    width: 200px;
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    --base-color: #ffffff; 
+    --text-color: #000000; 
+    --primary-color: #ffc06e;
+    --secondary-color: #8D8DFF; 
+    --color-1: #F9F6F3; 
+    --color-2: #F3F7F9; 
+    --color-3: #F6F3F9; 
+}
+
+* { /* use the "*" to edit all css elements */ 
+    margin: 0; /* by default there's a weird spacing thing that happens */ 
+    padding: 0; 
+    box-sizing: border-box; /* this makes sure that padding and borders dont mess up anything */ 
+}
+
+html { 
+    font-family: Funnel Sans, Fira Sans, sans-serif;
+    color: var(--text-color); /* the color for all the text is going to be --text-color, which is black right now */ 
 }
 
 body { 
-    text-align: center; /* specifies that every `body` tag should have a `text-align` of `center`. thus, centering everything on the page */
-    font-family: 'Arial';
-    background: azure; 
-    color: purple; /* this is for text color -- all color names here: https://www.w3schools.com/colors/colors_names.asp */ 
+    padding: 1em; 
+    background-color: var(--base-color); 
+}
+
+h1, h2, h3 { 
+    font-family: Funnel Sans, Fira Sans; 
+}
+
+nav ul { /* this basically creates the navigation menu and aligns it to the center  */
+    display: flex; 
+    align-items: center;
+    list-style-type: none; 
+    gap: 2em;
+}
+
+nav { 
+    margin: 1em auto 3em auto; /* the 4 values are top, right, bottom, and left; for left & right, we set margin = auto to center it horizontally on the page  */ 
+    width: min(1000px, 100%); /* means the bar can grow up to 1000 pixels, but can never go wider than the screen  size (100%) -- this helps it look good on both large & small screens*/ 
+    list-style-type: none; /* removes the default bullet points */ 
+    gap: 2em; /* adds spacing between the links */ 
+}
+
+nav li:first-child { /* this isolates the name ("John Smith"), bolds it, and makes it separate from the other things in the navigation menu */
+    margin-right: auto; /* all the other items are pushed to the right */ 
+    font-family: Funnel Sans, Fira Sans;
+    font-weight: bold; 
+}
+
+nav a { 
+    text-decoration: none; /* removes the underline by default to the links */ 
+    color: var(--text-color); 
+}
+
+nav a:hover { /* on hover, add the underline to show that this link is clickable */ 
+    text-decoration: underline; 
+}
+
+header, section { /* selects the header and all future section elements because they should all have the same starts */ 
+    margin: 2em auto; /* adds vertical spacing and centers the section horizontally */ 
+    width: min(75em, 100%); /* makes it up to 75em wide but never overflow the screen */ 
+    background-color: var(--color-1); 
+    padding: min(2em, 15%); /* padding is flexible with 2em by default, but on smaller screens, it's going to be 15% -- so it'll shrink if needed */
+    border-radius: 1em; /* gives the corners a subtle curve */ 
+}
+
+
+/* now style the container that holds both the image and the text */ 
+.flex-container { 
+    display: flex; /* allows us to arrange chart elements side by side */
+    justify-content: center; /* aligns everything horizontally in the center */
+    align-items: center; /* aligns everything vertically in the center */
+    flex-wrap: wrap; /* allows the content to stack on smaller screens */
+    gap: 3em; /* adds space between image and text container*/
+}
+
+
+/* now let's style the image */ 
+header img { 
+    max-width: 100%; /* image never overflows its container */ 
+    border-radius: 1em; /* rounds corners */
+    object-fit: cover; /* fill area WITHOUT STRETCHING!! can crop the img instead */
+    object-position: bottom; /* if cropping happens, FOCUS on the BOTTOM part of the image -- as in, you remove stuff from the top */
+}
+
+.text-container { 
+    flex: 0 1 34em; /* 0 is the first value, where we define the flex grow behavior. setting to 0 = don't want the text container to grow. second value is flex shrink: it's set to 1, which means shrink if needed. 34em is the flex spaces, which is preferred width. basically, we tell the text container: try to be around 34 em wide but shrink if the screen is small. don't grow isf the screen is big. */
+}
+
+/* now styling the headings */ 
+h1 { 
+    font-size: 2.5rem; 
+}
+
+/* now to the paragraph below it */ 
+.text-container p { 
+    margin: 0.75em 0 1em 0; /* adds vertical spacing (a margin to the top and to the bottom) to the paragraph, but not horizontal spacing */
+    font-size: 1.25rem; /* makes the paragraph slightly larger than normal text */ 
+}
+
+.cta-button { /* this is the "call to action" button, which is the "Contact Me" button in the header */ 
+    display: inline-block; /* makes it like a block element but still allows it to be on the same line as other things (like the paragraph) */ 
+    text-decoration: none; /* removes underline from the link */
+    padding: 0.75em 1.5em; /* adds space inside the button (top/bottom = 0.75em, left/right = 1.5em) */ 
+    background-color: var(--primary-color); 
+    color: white;
+    border-radius: 0.5em; /* rounds the corners of the button */ 
+    font-weight: 600; /* which makes the button's text bold */  
+}
+
+.secondary { 
+    background-color: var(--secondary-color);
+}
+
+/* now we're styling the second section: the "how i can help you" part */
+section { 
+    padding: 3em min(2em, 15%); /* top & bottom padding is fixed with 3em. padding for left & right (2nd value) will be responsive: it'll usually be 2em but on smaller screens, it uses %s for flexibility */
+    background-color: var(--color-2); /* adds a diff color for this section to distinguish it from the white background */ 
+    text-align: center; 
 }
